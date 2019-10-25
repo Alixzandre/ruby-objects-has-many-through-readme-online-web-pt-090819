@@ -1,12 +1,12 @@
 class Waiter
-attr_accessor :name, :years
+  attr_accessor :name, :years
 
-@@all = []
+  @@all = []
 
-def initialize(name,years)
-  @name = name
+  def initialize(name,years)
+    @name = name
     @years = years
-   @@all << self
+    @@all << self
   end
 
   def self.all
@@ -16,7 +16,10 @@ def initialize(name,years)
   def new_meal(customer,total,tip)
       Meal.new(self,customer,total,tip)
     end
+    
   def meals
-    Meal.all.select{|m| m.customer == self}
+    Meal.all.select{|m| m.waiter == self}
   end
+  
+  
 end
